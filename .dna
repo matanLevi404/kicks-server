@@ -1,0 +1,67 @@
+// AUTH ROUTES
+
+ROUTE/register: //POST
+    - req_body: firstname, lastname. email, telephone, password, subscribe.
+    - res_msg: "User registered succsesfully".
+    - req_err: "Something went wrong".
+
+ROUTE/login: //POST
+    - req_body: email, password.
+    - res_msg: "User logged in succsesfully".
+    - res_err: "Something went wrong".
+
+// HOME ROUTES
+
+ROUTE/home: //GET
+    - req_body: -.
+    - res: {products: {id: num, brand_id: num, cat_id: num ,brand: string, price: int, bigDeal: boolean,
+        rating: num, des: string, img: string} ... }.
+    - res_err: "Something went wrong".
+
+ROUTE/home/allshoes: //GET
+    - req_body: -.
+    - res: {products: {id: num, brand_id: num, cat_id: num ,brand: string, price: int, bigDeal: boolean,
+        rating: num, des: string, img: string} ... }.
+    - res_err: "Something went wrong".
+
+ROUTE/home/:brand_id: //GET
+    - req_param: brand_id number.
+    - res: {products: {id: num, brand_id: num, cat_id: num ,brand: string, price: int, bigDeal: boolean,
+        rating: num, des: string, img: string} ... }.
+    - res_err: "Something went wrong".
+
+ROUTE/home/:brand_id/:cat_id: //GET
+    - req_param: brand_id number, cat_id.
+    - res: {products: {id: num, brand_id: num, cat_id: num ,brand: string, price: int, bigDeal: boolean,
+        rating: num, des: string, img: string} ... }.
+    - res_err: "Something went wrong".
+
+// CART ROUTES
+
+ROUTE/cart/:card_id: //GET
+    - req_param: cart_id number.
+    - res: {cart: {product_id: num}}.
+    - res_err: "Something went wrong".
+
+ROUTE/cart/:cart_id: //DELETE
+    - req_param: cart_id number.
+    - res_msg: "cart removed succsesfully".
+    - res_err: "Something went wrong".
+
+ROUTE/cart/:product_id: //GET
+    - req_param: product_id number.
+    - res_msg: "Product added succsesfully".
+    - res_err: "Something went wrong".
+
+ROUTE/cart/:product_id: //DELETE
+    - req_param: product_id number.
+    - res_msg: "Product removed succsesfully".
+    - res_err: "Something went wrong".
+
+// CHECKOUT ROUTES
+
+ROUTE/checkout: //POST
+    - req_body: firstname, lastname. email, telephone, password, address, city, postcode, countery
+        card_num.
+    - res_msg: "Your order is on its way".
+    - res_err: "Something went wrong".

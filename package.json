@@ -1,0 +1,28 @@
+{
+  "name": "kicks-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": ".\\node_modules\\.bin\\env-cmd -f .\\config\\.env nodemon index.js",
+    "start": "node index.js",
+    "productSeed": ".\\node_modules\\.bin\\env-cmd -f .\\config\\.env node seed\\productSeed.js",
+    "categoriesSeed": ".\\node_modules\\.bin\\env-cmd -f .\\config\\.env node seed\\categoriesSeed.js",
+    "adminSeed": ".\\node_modules\\.bin\\env-cmd -f .\\config\\.env node seed\\adminSeed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "pdfkit": "^0.13.0",
+    "stripe": "^11.1.0"
+  }
+}
