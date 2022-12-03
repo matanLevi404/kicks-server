@@ -42,6 +42,33 @@ router.get("/categories/:name", async (req, res) => {
   }
 });
 
+// get products by search
+router.get("/search", async (req, res) => {
+  try {
+    const search = req.query.q;
+
+    const products = await Product.find().where({
+      $or: [
+        {
+          name: new RegExp(`.*${search}.*`),
+        },
+        {
+          name: new RegExp(
+            `.*${search.charAt(0).toUpperCase() + search.slice(1)}.*`
+          ),
+        },
+      ],
+    });
+
+    if (!products) return res.status(500).send({ err: "No results !" });
+
+    res.send({ products });
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+});
+
 // get a single product by id
 router.get("/product/:id", async (req, res) => {
   try {

@@ -24,6 +24,8 @@ app.use(exp.static("orders"));
 app.use("/", require("./routes/auth"));
 app.use("/home", require("./routes/home"));
 app.use("/cart", require("./routes/cart"));
+app.use("/wishlist", require("./routes/wish"));
+app.use("/rate", require("./routes/rate"));
 app.use("/checkout", require("./routes/checkout"));
 
 const port = process.env.PORT || 3001;

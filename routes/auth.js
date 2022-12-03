@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { onlyLoggedUsers } = require("../helpers/onlyLoggedUsers");
 const Cart = require("../models/carts");
+const Wish = require("../models/wishs");
+const Rate = require("../models/rates");
 
 // register
 router.post("/register", async (req, res) => {
@@ -37,7 +39,13 @@ router.post("/register", async (req, res) => {
 
     const cart = new Cart({ user_id: new_user._id });
 
+    const wishList = new Wish({ user_id: new_user._id });
+
+    const rate = new Rate({ user_id: new_user._id });
+
     await cart.save();
+    await wishList.save();
+    await rate.save();
 
     res
       .status(200)
